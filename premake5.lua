@@ -23,12 +23,14 @@ project "E2DE"
         "E2DE/Vendor/SDL2/include/**.h",
         "E2DE/Vendor/SDL2/src/*.h",
         "E2DE/Vendor/SDL2/src/*.c",
+        "E2DE/Vendor/SDL2/src/core/*.c",
     }
 
     filter "system:windows"
         files{
             "E2DE/Vendor/SDL2/src/core/windows/*.h",
             "E2DE/Vendor/SDL2/src/core/windows/*.c",
+            "E2DE/Vendor/SDL2/src/core/windows/*.cpp",
             "E2DE/Vendor/SDL2/src/hidapi/windows/hid.c",
         }
     filter "system:linux"
