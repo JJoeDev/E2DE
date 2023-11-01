@@ -6,7 +6,9 @@ The engine is not supposed to compete against other engines like Unity, Godot, o
 ---
 
 [What is E2DE](what-is-this-exactly)
+
 [Engine Features](features)
+
 [Libraries in use](libraries)
 
 ---
