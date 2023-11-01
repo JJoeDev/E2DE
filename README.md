@@ -5,11 +5,11 @@ This is a simple 2D game engine that I am making at the moment because I have wa
 The engine is not supposed to compete against other engines like Unity, Godot, or GDevelop, it is only supposed to be something I use for small 2D games, but lets see how long that stays true
 ---
 
-[What is E2DE](what-is-this-exactly)
+[What is E2DE](#what-is-this-exactly)
 
-[Engine Features](features)
+[Engine Features](#features)
 
-[Libraries in use](libraries)
+[Libraries in use](#libraries)
 
 ---
 
