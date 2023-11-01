@@ -1,4 +1,4 @@
-workspace "E2DE"
+workspace "Demo"
     configurations { "Debug", "Release" }
     architecture "x64"
     location "build"
@@ -11,17 +11,26 @@ workspace "E2DE"
         defines { "NDEBUG" }
         optimize "On"
 
-project "E2DE"
-    kind "StaticLib"
+project "Demo"
+    kind "ConsoleApp"
     language "C++"
     targetdir ("bin/%{cfg.buildcfg}")
     objdir ("obj/%{cfg.buildcfg}")
 
     files{
-        "E2DE/src/**.cpp",
-        "E2DE/src/**.h"
+        "src/**.cpp",
+        "src/**.h"
     }
 
-    includedirs{
-        "E2DE/src"
+    includedirs {
+        "src/",
+        "../E2DE/src"
+    }
+
+    links {
+        "E2DE"
+    }
+
+    libdirs {
+        "../bin/Debug"
     }
