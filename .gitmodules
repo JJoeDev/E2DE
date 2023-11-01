@@ -1,4 +1,0 @@
-[submodule "E2DE/Vendor/SDL2"]
-	path = E2DE/Vendor/SDL2
-	url = https://github.com/libsdl-org/SDL.git
-	branch = main
