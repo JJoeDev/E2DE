@@ -3,6 +3,7 @@
 This is a simple 2D game engine that I am making at the moment because I have wanted to do it for quite a while
 
 The engine is not supposed to compete against other engines like Unity, Godot, or GDevelop, it is only supposed to be something I use for small 2D games, but lets see how long that stays true
+
 ---
 
 [What is E2DE](#what-is-this-exactly)
