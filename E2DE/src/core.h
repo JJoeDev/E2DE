@@ -5,5 +5,7 @@ namespace Core{
     public:
         Engine();
         ~Engine();
+
+        void HelloFunc();
     };
 }
