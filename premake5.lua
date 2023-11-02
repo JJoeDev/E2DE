@@ -25,7 +25,7 @@ project "E2DE"
     filter "system:linux" -- ADD WINDOWS SUPPORT LATER
         includedirs{
             "E2DE/src",        
-            "E2DE/Vendor/SDL2/Linux/include/**.h"
+            "E2DE/Vendor/SDL2/Linux/include"
         }
 
     filter "system:linux"

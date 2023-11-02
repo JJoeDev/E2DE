@@ -28,8 +28,12 @@ project "Demo"
     }
 
     links {
-        "E2DE"
+        "E2DE",
+        "SDL2",
+        "SDL2main"
     }
+
+    filter {} -- reset filters
 
     libdirs {
         "../bin/Debug"
