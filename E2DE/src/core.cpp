@@ -1,4 +1,4 @@
-#include "core.h"
+#include "include/core.h"
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_render.h>
 

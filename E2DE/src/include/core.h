@@ -1,3 +1,6 @@
+#ifndef E2E_CORE_H_
+#define E2E_CORE_H_
+
 #include <iostream>
 #include "SDL2/SDL.h"
 
@@ -19,3 +22,5 @@ namespace e2e{
         bool _running{ false };
     };
 }
+
+#endif
