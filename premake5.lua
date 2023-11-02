@@ -22,16 +22,19 @@ project "E2DE"
         "E2DE/src/**.h",
     }
 
-    includedirs{
-        "E2DE/src",
-        os.getenv("SDL2_DIR") and (os.getenv("SDL2_DIR") .. "/include") or "/usr/include/SDL2" -- Only works if ENV PATH is set
-    }
-
-    filter "system:windows"
-        libdirs{
-            os.getenv("SDL2_DIR") and ("%{sdl2_dir}/lib") -- If PATH is not set figure out how to use or to get some other way to go there
+    filter "system:linux" -- ADD WINDOWS SUPPORT LATER
+        includedirs{
+            "E2DE/src",        
+            "E2DE/Vendor/SDL2/Linux/include/**.h"
         }
+
+    filter "system:linux"
+        libdirs{
+            "E2DE/Vendor/SDL2/Linux/build"
+        }
+
     filter "system:linux"
         links{
-            "SDL2"
+            "SDL2",
+            "SDL2main"
         }
