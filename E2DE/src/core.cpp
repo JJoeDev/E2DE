@@ -1,22 +1,36 @@
 #include "core.h"
+#include <SDL2/SDL_events.h>
+#include <SDL2/SDL_render.h>
 
-Core::Engine::Engine(){
-    std::cout << "Engine constructor called!\n";
+e2e::Engine::Engine(const char* title, int width, int height){
+    SDL_Init(SDL_INIT_VIDEO);
 
-    _window = SDL_CreateWindow("TestWindow", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 500, 500, SDL_WINDOW_SHOWN);
+    _window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
     _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
+
+    if (_window && _renderer) _running = true;
 }
 
-Core::Engine::~Engine(){
-    std::cout << "Engine Deconstructor Called!\n";
-
+e2e::Engine::~Engine(){
     SDL_DestroyRenderer(_renderer);
     SDL_DestroyWindow(_window);
     SDL_Quit();
 }
 
-void Core::Engine::HelloFunc(){
+void e2e::Engine::update(){
+    SDL_Event e;
+
+    while(SDL_PollEvent(&e)){
+        switch(e.type){
+        case SDL_QUIT:
+            _running = false;
+            break;
+        }
+    }
+}
+
+void e2e::Engine::render(){
     SDL_RenderClear(_renderer);
-    SDL_SetRenderDrawColor(_renderer, 255, 0, 0, 255);
+    SDL_SetRenderDrawColor(_renderer, 100, 100, 100, 255);
     SDL_RenderPresent(_renderer);
 }

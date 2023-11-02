@@ -1,15 +1,21 @@
 #include <iostream>
 #include "SDL2/SDL.h"
 
-namespace Core{
+namespace e2e{
     class Engine{
     public:
-        Engine();
+        Engine(const char* title, int width, int height);
         ~Engine();
 
-        void HelloFunc();
+        inline bool& isRunning() { return _running; }
+
+        void update();
+        void render();
+
     private:
-        SDL_Window* _window{nullptr};
-        SDL_Renderer* _renderer{nullptr};
+        SDL_Window* _window{ nullptr };
+        SDL_Renderer* _renderer{ nullptr };
+
+        bool _running{ false };
     };
 }

@@ -1,12 +1,12 @@
-#include "core.h"
+#include "../../E2DE/src/core.h" // This can be made to just core.h but vs code doesn't like that for some reason
 
-int main(){ // Simple test to see if library is working right
-    Core::Engine* Engine = new Core::Engine();
+int main(){
+    e2e::Engine e("Hello Window", 500, 500);
 
-    while(true){
-        Engine->HelloFunc();
+    while(e.isRunning()){
+        e.update();
+        e.render();
     }
 
-    delete Engine;
     return 0;
 }

@@ -57,7 +57,8 @@ you can check if it is installed correctly by running ```premake5 --version```
 ### Features
 | Features | STATUS |
 | - | - |
-| Window Creation | W.I.P |
+| Window Creation | WORKING |
+| Basic inputs | W.I.P |
 
 ---
 
