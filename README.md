@@ -8,6 +8,8 @@ The engine is not supposed to compete against other engines like Unity, Godot, o
 
 [What is E2DE](#what-is-this-exactly)
 
+[How do I try it](#instalation-and-setup)
+
 [Engine Features](#features)
 
 [Libraries in use](#libraries)
@@ -22,11 +24,40 @@ Now they are all awesome and good frameworks, some easier than others. But I wan
 
 ---
 
+## Instalation and setup
+
+E2DE is not even close to being ready for use yet, but if you really want to try it you can always clone the repo and run it just like I do at the moment
+
+#### WINDOWS
+
+If you are on windows, then you will have to figure out how to link to SDL2 your self, as I have been working on the linux part first
+
+#### LINUX
+
+Start by installing premake, on arch based distros its as simple as ```sudo pacman -S premake```
+
+you can check if it is installed correctly by running ```premake5 --version```
+
+1. git clone https://github.com/JJoeDev/E2DE.git
+
+2. Work your way to E2DE/E2DE/Vendor/SDL2/Linux and create a directory called "build"
+
+3. cd into SDL2-2.28.4 and run ```cmake . -B ../build```
+
+4. now you can go back to ../build and run the ```make``` command like this: make
+
+5. That should be everything, to check if it is running you can go back to ../../../../../ and run ./build-d.sh to build the engine library file
+
+6. After building the engine library file go to E2DE and run: ```premake5 gmake2``` and after that run ```make -C build/```
+
+7. Now you should be able to run the demo "game" by ```./bin/Debug/Demo```
+
+---
+
 ### Features
 | Features | STATUS |
 | - | - |
-| Window Creation | Working |
-| Event handeling | W.I.P |
+| Window Creation | W.I.P |
 
 ---
 
@@ -34,4 +65,5 @@ Now they are all awesome and good frameworks, some easier than others. But I wan
 | Libraries |
 | - |
 | SDL2 (for window and input) |
+
 
