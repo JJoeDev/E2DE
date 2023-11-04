@@ -18,15 +18,7 @@ e2e::Engine::~Engine(){
 }
 
 void e2e::Engine::update(){
-    SDL_Event e;
-
-    while(SDL_PollEvent(&e)){
-        switch(e.type){
-        case SDL_QUIT:
-            _running = false;
-            break;
-        }
-    }
+    //Input.Update();
 }
 
 void e2e::Engine::render(){

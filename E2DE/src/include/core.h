@@ -2,6 +2,7 @@
 #define E2E_CORE_H_
 
 #include <iostream>
+
 #include "SDL2/SDL.h"
 
 namespace e2e{
@@ -9,8 +10,6 @@ namespace e2e{
     public:
         Engine(const char* title, int width, int height);
         ~Engine();
-
-        inline bool& isRunning() { return _running; }
 
         void update();
         void render();
