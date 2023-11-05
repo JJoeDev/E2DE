@@ -5,6 +5,8 @@
 
 #include "SDL2/SDL.h"
 
+#include "InputHandler.h"
+
 namespace e2e{
     class Engine{
     public:
@@ -14,9 +16,13 @@ namespace e2e{
         void update();
         void render();
 
+        inline bool Terminate() { return _inputHandler->OnQuitEvent(); }
+
     private:
         SDL_Window* _window{ nullptr };
         SDL_Renderer* _renderer{ nullptr };
+
+        InputHandler* _inputHandler{nullptr};
 
         bool _running{ false };
     };

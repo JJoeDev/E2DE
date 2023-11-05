@@ -1,4 +1,5 @@
 #include "include/core.h"
+
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_render.h>
 
@@ -18,7 +19,7 @@ e2e::Engine::~Engine(){
 }
 
 void e2e::Engine::update(){
-    //Input.Update();
+    _inputHandler->Update();
 }
 
 void e2e::Engine::render(){
