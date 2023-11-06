@@ -58,7 +58,8 @@ you can check if it is installed correctly by running ```premake5 --version```
 | Features | STATUS |
 | - | - |
 | Window Creation | WORKING |
-| Basic inputs | W.I.P |
+| Basic inputs | BASIC SUPPORT (Keyboard only) |
+| Rendering | W.I.P |
 
 ---
 
