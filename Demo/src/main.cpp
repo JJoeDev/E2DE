@@ -4,12 +4,15 @@
 int main(){
     e2e::Engine app("Hello DEMO", 500, 500);
 
-    app.GetEventManager().NewMap("test");
-    app.GetEventManager().BindKey("test", e2e::KEY_T, 1.0f);
+    app.GetEventInstance()->NewMap("t");
+    app.GetEventInstance()->BindKey("t", e2e::KEY_H, 1.0f);
+
+    // app.GetEventManager().NewMap("test");
+    // app.GetEventManager().BindKey("test", e2e::KEY_T, 1.0f);
 
     while(!app.Terminate()){
-        if(app.GetEventManager().Released("test"))
-            std::cout << "TEST KEY VALUE: " << app.GetEventManager().GetValue("test");
+        if(app.GetEventInstance()->Released("t"))
+            std::cout << "H RELEASED!\n";
 
         app.update();
         app.render();

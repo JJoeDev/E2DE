@@ -10,8 +10,13 @@
 namespace e2e{
     class EventManager{
     public:
-        EventManager();
-        virtual ~EventManager();
+        static EventManager& GetInstance(){
+            static EventManager instance;
+            return instance;
+        }
+
+        EventManager(const EventManager&)   = delete;
+        void operator=(const EventManager&) = delete;
 
         void Update();
 
@@ -27,6 +32,8 @@ namespace e2e{
         bool GetQuit();
 
     private:
+        EventManager(){ _quitEvent = false; }
+
         enum class KeyState : char{
             NONE,
             PRESS,

@@ -1,14 +1,6 @@
 #include "include/EventManager.h"
 #include <SDL2/SDL_events.h>
 
-e2e::EventManager::EventManager(){
-    _quitEvent = false;
-}
-
-e2e::EventManager::~EventManager(){
-
-}
-
 void e2e::EventManager::Update(){
     for(auto& obj : _map){
         obj.second.value = 0.0f;

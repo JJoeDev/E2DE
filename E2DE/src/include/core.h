@@ -12,9 +12,9 @@ namespace e2e{
         Engine(const char* title, int width, int height);
         ~Engine();
 
-        inline EventManager& GetEventManager() { return _eventManager; }
+        inline EventManager* GetEventInstance() { return _eventManager; }
 
-        inline bool Terminate() { return _eventManager.GetQuit(); }
+        inline bool Terminate() { return _eventManager->GetQuit(); }
 
         void update();
         void render();
@@ -23,7 +23,7 @@ namespace e2e{
         SDL_Window* _window{ nullptr };
         SDL_Renderer* _renderer{ nullptr };
 
-        EventManager _eventManager;
+        EventManager* _eventManager;
 
         bool _running{ false };
     };

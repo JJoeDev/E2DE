@@ -1,4 +1,5 @@
 #include "include/core.h"
+#include "include/EventManager.h"
 
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_render.h>
@@ -8,6 +9,8 @@ e2e::Engine::Engine(const char* title, int width, int height){
 
     _window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
     _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
+
+    _eventManager = &e2e::EventManager::GetInstance();
 
     if (_window && _renderer) _running = true;
 }
@@ -19,7 +22,7 @@ e2e::Engine::~Engine(){
 }
 
 void e2e::Engine::update(){
-    _eventManager.Update();
+    _eventManager->Update();
 }
 
 void e2e::Engine::render(){
