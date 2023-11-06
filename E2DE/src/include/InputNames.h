@@ -246,6 +246,7 @@ namespace e2e{
         KEY_RIGHT_PAREN = SDLK_RIGHTPAREN
 
     };
+    /* // Can be used in the future if we want JSON support, but for now its useless
     static std::unordered_map<std::string, int> InputNameStr = {
         {"KEY_0", KEY_0},
         {"KEY_0", KEY_0},
@@ -483,7 +484,7 @@ namespace e2e{
         {"KEY_QUESTION", KEY_QUESTION},
         {"KEY_QUOTEDBL", KEY_QUOTEDBL},
         {"KEY_RIGHT_PAREN", KEY_RIGHT_PAREN}
-    };
+    };*/
 }
 
 #endif
