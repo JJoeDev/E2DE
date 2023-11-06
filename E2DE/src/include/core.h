@@ -3,9 +3,8 @@
 
 #include <iostream>
 
+#include "EventManager.h"
 #include "SDL2/SDL.h"
-
-#include "InputHandler.h"
 
 namespace e2e{
     class Engine{
@@ -13,16 +12,18 @@ namespace e2e{
         Engine(const char* title, int width, int height);
         ~Engine();
 
+        inline EventManager& GetEventManager() { return _eventManager; }
+
+        inline bool Terminate() { return _eventManager.GetQuit(); }
+
         void update();
         void render();
-
-        inline bool Terminate() { return _inputHandler->OnQuitEvent(); }
 
     private:
         SDL_Window* _window{ nullptr };
         SDL_Renderer* _renderer{ nullptr };
 
-        InputHandler* _inputHandler{nullptr};
+        EventManager _eventManager;
 
         bool _running{ false };
     };

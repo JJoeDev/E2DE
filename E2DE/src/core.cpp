@@ -19,7 +19,7 @@ e2e::Engine::~Engine(){
 }
 
 void e2e::Engine::update(){
-    _inputHandler->Update();
+    _eventManager.Update();
 }
 
 void e2e::Engine::render(){
