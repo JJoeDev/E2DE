@@ -5,7 +5,8 @@ int main(){
     e2e::Engine app("Hello DEMO", 500, 500);
 
     app.GetEventInstance()->NewMap("t");
-    app.GetEventInstance()->BindKey("t", e2e::KEY_H, 1.0f);
+    app.GetEventInstance()->BindKey("t", e2e::KEYS::KEY_UP, 1.0f);
+    app.GetEventInstance()->BindKey("t", e2e::KEYS::KEY_H, 0.35f);
 
     e2e::Vector pos(40.2f, 33.64f);
     e2e::Vector pos2(12.304f, 0.1f);
@@ -32,8 +33,10 @@ int main(){
     std::cout << "POS X: " << pos.x << " POS Y: " << pos.y << '\n';
 
     while(!app.Terminate()){
-        if(app.GetEventInstance()->Released("t"))
-            std::cout << "H RELEASED!\n";
+        if(app.GetEventInstance()->Hold("t")){
+            std::cout << "UP RELEASED!\n";
+            std::cout << "VAL: " << app.GetEventInstance()->GetValue("t") << '\n';
+        }
 
         app.update();
         app.render();

@@ -7,7 +7,7 @@
 
 #include "SDL2/SDL.h"
 
-namespace e2e{
+namespace e2e::KEYS{
     enum InputNames {
         KEY_0 = SDLK_0,
         KEY_1 = SDLK_1,
