@@ -12,22 +12,22 @@ namespace e2e{
 
         Vector Normalized();
 
-        Vector operator+(const Vector&);
-        Vector operator-(const Vector&);
-        Vector operator+(const float&);
-        Vector operator-(const float&);
+        inline Vector operator+(const Vector& v) { return Vector(x + v.x, y + v.y); }
+        inline Vector operator-(const Vector& v) { return Vector(x - v.x, y - v.y); }
+        inline Vector operator+(const float& v) { return Vector(x + v, y + v); }
+        inline Vector operator-(const float& v) { return Vector(x - v, y - v); }
 
-        Vector operator*(const float&);
-        Vector operator/(const float&);
+        inline Vector operator*(const float& v) { return Vector(x * v, y * v); }
+        inline Vector operator/(const float& v) { return Vector(x / v, y / v); }
 
-        bool operator==(const Vector&) const;
+        inline bool operator==(const Vector& v) const { return x == v.x && y == v.y; }
 
-        void operator+=(const Vector&);
-        void operator-=(const Vector&);
-        void operator+=(const float&);
-        void operator-=(const float&);
-        void operator*=(const float&);
-        void operator/=(const float&);
+        inline void operator+=(const Vector& v) { x += v.x; y += v.y; }
+        inline void operator-=(const Vector& v) { x -= v.x; y -= v.y; }
+        inline void operator+=(const float& v) { x += v; y += v; }
+        inline void operator-=(const float& v) { x -= v; y -= v; }
+        inline void operator*=(const float& v) { x *= v; y *= v; }
+        inline void operator/=(const float& v) { x /= v; y /= v; }
 
         float x, y;
     };

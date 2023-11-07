@@ -46,11 +46,8 @@ you can check if it is installed correctly by running ```premake5 --version```
 
 4. now you can go back to ../build and run the ```make``` command like this: make
 
-5. That should be everything, to check if it is running you can go back to ../../../../../ and run ./build-d.sh to build the engine library file
-
-6. After building the engine library file go to E2DE and run: ```premake5 gmake2``` and after that run ```make -C build/```
-
-7. Now you should be able to run the demo "game" by ```./bin/Debug/Demo```
+5. That should be everything, to check if it is running you can go back to ```../../../../../``` and run ```./testrun-d.sh``` to build the engine library
+and also build the Demo and lastly it will run the demo for you
 
 ---
 
