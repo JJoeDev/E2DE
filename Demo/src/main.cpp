@@ -29,7 +29,6 @@ int main(){
         Vector /= float
     */
 
-
     std::cout << "POS X: " << pos.x << " POS Y: " << pos.y << '\n';
 
     while(!app.Terminate()){
@@ -37,6 +36,8 @@ int main(){
             std::cout << "UP RELEASED!\n";
             std::cout << "VAL: " << app.GetEventInstance()->GetValue("t") << '\n';
         }
+
+        std::cout << "FPS: " << 1000 / app.GetDeltaTime() << '\n';
 
         app.update();
         app.render();

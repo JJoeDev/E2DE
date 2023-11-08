@@ -27,6 +27,8 @@ namespace e2e{
 
         inline bool Terminate() { return _eventManager->GetQuit(); }
 
+        inline float GetDeltaTime() { return _delta; }
+
         void update();
         void render();
 
@@ -35,6 +37,10 @@ namespace e2e{
         SDL_Renderer* _renderer{ nullptr };
 
         EventManager* _eventManager{nullptr};
+
+        unsigned long _frameStart{0};
+        unsigned long _frameEnd{0};
+        double _delta{0};
 
         bool _running{ false };
     };

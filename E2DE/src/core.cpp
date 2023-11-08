@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_render.h>
+#include <SDL2/SDL_timer.h>
 
 e2e::Engine::Engine(const char* title, int width, int height){
     SDL_Init(SDL_INIT_VIDEO);
@@ -22,6 +23,10 @@ e2e::Engine::~Engine(){
 }
 
 void e2e::Engine::update(){
+    _frameEnd = _frameStart;
+    _frameStart = SDL_GetPerformanceCounter();
+    _delta = static_cast<double>((_frameStart - _frameEnd) * 1000 / static_cast<double>(SDL_GetPerformanceFrequency()));
+
     _eventManager->Update();
 }
 
