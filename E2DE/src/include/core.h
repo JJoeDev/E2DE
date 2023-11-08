@@ -13,7 +13,7 @@
         * Static renderer that every entity can get their hands on
         * Inheritance for gameobjects
         * ECS? (I am not creating my own ECS again. Use EnTT)
-        * 
+        * Forward declaration
     }
 */
 
