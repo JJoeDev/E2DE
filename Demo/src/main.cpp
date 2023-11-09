@@ -1,4 +1,5 @@
 #include "../../E2DE/src/include/core.h"
+#include "../../E2DE/src/include/Rendertest.h"
 #include <iostream>
 
 int main(){
@@ -31,6 +32,9 @@ int main(){
 
     std::cout << "POS X: " << pos.x << " POS Y: " << pos.y << '\n';
 
+    e2e::dev::Renderable render(pos);
+    e2e::dev::Renderable render2(pos * 2);
+
     while(!app.Terminate()){
         if(app.GetEventInstance()->Hold("t")){
             std::cout << "UP RELEASED!\n";
@@ -40,7 +44,13 @@ int main(){
         std::cout << "FPS: " << 1000 / app.GetDeltaTime() << '\n';
 
         app.update();
-        app.render();
+
+        app.BeginRender();
+
+        render.render(app);
+        render2.render(app);
+
+        app.EndRender();
     }
 
     return 0;

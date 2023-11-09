@@ -22,6 +22,10 @@ e2e::Engine::~Engine(){
     SDL_Quit();
 }
 
+void e2e::Engine::DrawRect(const SDL_Rect& r){    
+    SDL_RenderDrawRect(_renderer, &r);
+}
+
 void e2e::Engine::update(){
     _frameEnd = _frameStart;
     _frameStart = SDL_GetPerformanceCounter();
@@ -30,8 +34,22 @@ void e2e::Engine::update(){
     _eventManager->Update();
 }
 
-void e2e::Engine::render(){
-    SDL_RenderClear(_renderer);
+void e2e::Engine::BeginRender(){
+    _Clear();
+    SDL_SetRenderDrawColor(_renderer, 255, 0, 0, 255);
+}
+
+void e2e::Engine::EndRender(){
     SDL_SetRenderDrawColor(_renderer, 100, 100, 100, 255);
+    _Present();
+}
+
+////// PRIVATES //////
+
+void e2e::Engine::_Clear(){
+    SDL_RenderClear(_renderer);
+}
+
+void e2e::Engine::_Present(){
     SDL_RenderPresent(_renderer);
 }

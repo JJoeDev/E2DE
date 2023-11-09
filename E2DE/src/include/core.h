@@ -29,10 +29,16 @@ namespace e2e{
 
         inline float GetDeltaTime() { return _delta; }
 
+        void DrawRect(const SDL_Rect&);
+
         void update();
-        void render();
+        void BeginRender();
+        void EndRender();
 
     private:
+        void _Clear();
+        void _Present();
+
         SDL_Window* _window{ nullptr };
         SDL_Renderer* _renderer{ nullptr };
 
