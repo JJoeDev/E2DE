@@ -8,6 +8,8 @@ The engine is not supposed to compete against other engines like Unity, Godot, o
 
 [What is E2DE](#what-is-this-exactly)
 
+[Development code](#latest-development-build)
+
 [How do I try it](#instalation-and-setup)
 
 [Engine Features](#features)
@@ -24,6 +26,10 @@ Now they are all awesome and good frameworks, some easier than others. But I wan
 
 ---
 
+## Latest development build
+
+If you for some reason would like to take a look at the what I am activly working on, you can take a loot at the dev branch. It is where I will push test code or just unfinished code.
+
 ## Instalation and setup
 
 E2DE is not even close to being ready for use yet, but if you really want to try it you can always clone the repo and run it just like I do at the moment
@@ -34,35 +40,35 @@ If you are on windows, then you will have to figure out how to link to SDL2 your
 
 #### LINUX
 
-Start by installing premake, on arch based distros its as simple as ```sudo pacman -S premake```
+Start out by installing premake5. In arch based distros it's as simple as running ```sudo pacman -S premake``` and on fedora based distros its ```sudo dnf install premake```
 
-you can check if it is installed correctly by running ```premake5 --version```
+You can check if premake is installed by running ```premake5 --version```
 
-1. git clone https://github.com/JJoeDev/E2DE.git
+You should also have both cmake and make installed, but I won't go over that here
 
-2. Work your way to E2DE/E2DE/Vendor/SDL2/Linux and create a directory called "build"
+---
 
-3. cd into SDL2-2.28.4 and run ```cmake . -B ../build```
+1. Start by cloning either master or dev version of the engine using either ```git clone --recursive https://github.com/JJoeDev/E2DE.git``` and get the dev by adding ```-b dev``` to the end
 
-4. now you can go back to ../build and run the ```make``` command like this: make
+2. You have to build SDL2 yourself for now, so go ahead and make your way to the Vendor directory in the engine code at ```E2DE/E2DE/Vendor``` and add a build directory
+after making the build directory you can run ```cmake /SDL2 -B /build``` once cmake is done you are free to run ```make -C build```
 
-5. That should be everything, to check if it is running you can go back to ```../../../../../``` and run ```./testrun-d.sh``` to build the engine library
-and also build the Demo and lastly it will run the demo for you
+3. Perfect, now SDL2 should have build correctly. You can now go back to the global E2DE directory (The first one) and run the testrun shell script to build the engine, demo, and run the demo. 
+```./testrun-d.sh```
 
 ---
 
 ### Features
-| Features | STATUS |
-| - | - |
-| Window Creation | WORKING |
-| Basic inputs | BASIC SUPPORT (Keyboard only) |
-| Rendering | W.I.P |
+| Features | STATUS | Branch |
+| - | - | - |
+| Window Creation | WORKING | main |
+| Basic inputs | BASIC SUPPORT (Keyboard only) | main |
+| Rendering | W.I.P | dev |
 
 ---
 
 ### Libraries
-| Libraries |
-| - |
-| SDL2 (for window and input) |
-
-
+| Libraries | Branch |
+| - | - |
+| [SDL2](https://www.libsdl.org/) | main |
+| [EnTT](https://github.com/skypjack/entt) | N/A |

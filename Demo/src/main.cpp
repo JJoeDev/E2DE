@@ -3,7 +3,7 @@
 #include <iostream>
 
 int main(){
-    e2e::Engine app("Hello DEMO", 500, 500);
+    e2e::Engine app("Hello DEMO", 500, 500, SHOWN);
 
     app.GetEventInstance()->NewMap("t");
     app.GetEventInstance()->BindKey("t", e2e::KEYS::KEY_UP, 1.0f);
@@ -37,11 +37,8 @@ int main(){
 
     while(!app.Terminate()){
         if(app.GetEventInstance()->Hold("t")){
-            std::cout << "UP RELEASED!\n";
-            std::cout << "VAL: " << app.GetEventInstance()->GetValue("t") << '\n';
+            
         }
-
-        std::cout << "FPS: " << 1000 / app.GetDeltaTime() << '\n';
 
         app.update();
 

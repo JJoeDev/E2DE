@@ -14,6 +14,8 @@ namespace e2e::dev{
 
         void render(Engine&);
 
+        inline void AddPos(const Vector& v) { r.x += v.x, r.y += v.y; }
+
     private:
         SDL_Rect r;
     };

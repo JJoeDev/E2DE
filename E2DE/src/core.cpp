@@ -1,14 +1,9 @@
 #include "include/core.h"
-#include "include/EventManager.h"
 
-#include <SDL2/SDL_events.h>
-#include <SDL2/SDL_render.h>
-#include <SDL2/SDL_timer.h>
-
-e2e::Engine::Engine(const char* title, int width, int height){
+e2e::Engine::Engine(const char* title, int width, int height, u_int32_t flags){
     SDL_Init(SDL_INIT_VIDEO);
 
-    _window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
+    _window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
     _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
 
     _eventManager = &e2e::EventManager::GetInstance();
