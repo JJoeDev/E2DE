@@ -5,4 +5,4 @@
 
 [submodule "E2DE/Vendor/ECS/EnTT"]
 	path = E2DE/Vendor/ECS/EnTT
-	url = https://github.com/skypjack/entt
+	url = https://github.com/skypjack/entt.git
