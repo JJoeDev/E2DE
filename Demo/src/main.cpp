@@ -1,5 +1,4 @@
-#include "../../E2DE/src/include/core.h"
-#include "../../E2DE/src/include/Rendertest.h"
+#include "../../E2DE/src/core.h"
 #include <iostream>
 
 int main(){
@@ -32,9 +31,6 @@ int main(){
 
     std::cout << "POS X: " << pos.x << " POS Y: " << pos.y << '\n';
 
-    e2e::dev::Renderable render(pos);
-    e2e::dev::Renderable render2(pos * 2);
-
     while(!app.Terminate()){
         if(app.GetEventInstance()->Hold("t")){
             
@@ -43,9 +39,6 @@ int main(){
         app.update();
 
         app.BeginRender();
-
-        render.render(app);
-        render2.render(app);
 
         app.EndRender();
     }

@@ -25,16 +25,18 @@ project "E2DE"
     filter "system:linux" -- ADD WINDOWS SUPPORT LATER
         includedirs{
             "E2DE/src",        
-            "E2DE/Vendor/SDL2/Linux/include"
+            "E2DE/Vendor/SDL/build/include/SDL2",
+            "E2DE/Vendor/ECS/EnTT/src/entt",
         }
 
     filter "system:linux"
         libdirs{
-            "E2DE/Vendor/SDL2/Linux/build"
+            "E2DE/Vendor/SDL/build",
+            "E2DE/Vendor/ECS/build",
         }
 
     filter "system:linux"
         links{
             "SDL2",
-            "SDL2main"
+            "SDL2main",
         }
