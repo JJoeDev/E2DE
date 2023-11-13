@@ -6,7 +6,9 @@
 #include <sys/types.h>
 
 #include "EventManager.h"
+#include "Scene/Entity.h"
 #include "Vector.h"
+#include "Scene/Scene.h"
 
 /*
     TODO: Rendering
@@ -56,7 +58,10 @@ namespace e2e{
 
         inline float GetDeltaTime() { return _delta; }
 
+        inline Scene& GetScene() { return scene; }
+
         void update();
+        void Render();
 
     private:
         void _Clear();
@@ -66,6 +71,8 @@ namespace e2e{
         SDL_Renderer* _renderer{ nullptr };
 
         EventManager* _eventManager{nullptr};
+
+        Scene scene;
 
         unsigned long _frameStart{0};
         unsigned long _frameEnd{0};

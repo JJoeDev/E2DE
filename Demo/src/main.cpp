@@ -29,6 +29,12 @@ int main(){
         Vector /= float
     */
 
+    auto p = app.GetScene().CreateEntity();
+    p.AddComponent<e2e::SpriteRendererComponent>(e2e::Vector4(160.0f, 255.0f, 72.5f, 255.0f));
+
+    p.GetComponent<e2e::TransformComponent>().Position = e2e::Vector(20.0f, 20.0f);
+    p.GetComponent<e2e::TransformComponent>().Scale = e2e::Vector(50.0f, 50.0f);
+
     std::cout << "POS X: " << pos.x << " POS Y: " << pos.y << '\n';
 
     while(!app.Terminate()){
@@ -37,6 +43,7 @@ int main(){
         }
 
         app.update();
+        app.Render();
     }
 
     return 0;

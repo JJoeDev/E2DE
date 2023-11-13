@@ -19,6 +19,7 @@ namespace e2e{
         entt::registry _registry;
 
         friend class Entity;
+        friend class Engine;
     };
 }
 

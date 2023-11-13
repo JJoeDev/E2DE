@@ -1,4 +1,6 @@
 #include "core.h"
+#include "Scene/Components.h"
+#include <SDL2/SDL_render.h>
 
 namespace e2e{
     Engine::Engine(const char* title, int width, int height, u_int32_t flags){
@@ -24,6 +26,27 @@ namespace e2e{
         _delta = static_cast<double>((_frameStart - _frameEnd) * 1000 / static_cast<double>(SDL_GetPerformanceFrequency()));
 
         _eventManager->Update();
+    }
+
+    void Engine::Render(){
+        _Clear();
+
+        auto view = scene._registry.view<SpriteRendererComponent, TransformComponent>();
+        for(auto e : view){
+            auto& position = view.get<TransformComponent>(e).Position;
+            auto& scale = view.get<TransformComponent>(e).Scale;
+
+            SDL_Rect r = {(int)position.x, (int)position.y, (int)scale.x, (int)scale.y};
+
+            auto& col = view.get<SpriteRendererComponent>(e).color;
+
+            SDL_SetRenderDrawColor(_renderer, col.x, col.y, col.w, col.h);
+
+            SDL_RenderDrawRect(_renderer, &r);
+        }
+
+        SDL_SetRenderDrawColor(_renderer, 20, 20, 20, 255);
+        _Present();
     }
 
     ////// PRIVATES //////

@@ -11,9 +11,9 @@ namespace e2e{
         TransformComponent(const TransformComponent&) = default;
         TransformComponent(const Vector& position, const Vector& scale, const float& rotation) : Position(position), Scale(scale), Rotation(rotation) {}
 
-        Vector Position;
-        Vector Scale;
-        float Rotation;
+        Vector Position{};
+        Vector Scale{1, 1};
+        float Rotation{0};
     };
 
     struct SpriteRendererComponent{
