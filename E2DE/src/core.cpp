@@ -18,26 +18,12 @@ namespace e2e{
         SDL_Quit();
     }
 
-    void Engine::DrawRect(const SDL_Rect& r){    
-        SDL_RenderDrawRect(_renderer, &r);
-    }
-
     void Engine::update(){
         _frameEnd = _frameStart;
         _frameStart = SDL_GetPerformanceCounter();
         _delta = static_cast<double>((_frameStart - _frameEnd) * 1000 / static_cast<double>(SDL_GetPerformanceFrequency()));
 
         _eventManager->Update();
-    }
-
-    void Engine::BeginRender(){
-        _Clear();
-        SDL_SetRenderDrawColor(_renderer, 255, 0, 0, 255);
-    }
-
-    void Engine::EndRender(){
-        SDL_SetRenderDrawColor(_renderer, 100, 100, 100, 255);
-        _Present();
     }
 
     ////// PRIVATES //////

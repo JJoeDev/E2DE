@@ -37,10 +37,6 @@ int main(){
         }
 
         app.update();
-
-        app.BeginRender();
-
-        app.EndRender();
     }
 
     return 0;
