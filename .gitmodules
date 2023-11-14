@@ -4,3 +4,7 @@
 [submodule "E2DE/Vendor/SDL/SDL_IMAGE/SDL_IMG"]
 	path = E2DE/Vendor/SDL/SDL_IMAGE/SDL_IMG
 	url = https://github.com/libsdl-org/SDL_image.git
+[submodule "E2DE/Vendor/SDL/SDL_CORE/SDL2"]
+	path = E2DE/Vendor/SDL/SDL_CORE/SDL2
+	url = https://github.com/libsdl-org/SDL.git
+	branch = SDL2
