@@ -5,10 +5,9 @@
 #include <SDL2/SDL.h>
 #include <sys/types.h>
 
-#include "EventManager.h"
-#include "Scene/Entity.h"
-#include "Vector.h"
-#include "Scene/Scene.h"
+#include "../Events/EventManager.h"
+#include "../Scene/Scene.h"
+#include "../Math/Vector.h"
 
 /*
     TODO: Rendering
@@ -58,7 +57,9 @@ namespace e2e{
 
         inline float GetDeltaTime() { return _delta; }
 
-        inline Scene& GetScene() { return scene; }
+        inline Scene& GetScene() { return _scene; }
+
+        inline void SetBgColor(const Vector4& color) { _bgColor = color; }
 
         void update();
         void Render();
@@ -72,7 +73,9 @@ namespace e2e{
 
         EventManager* _eventManager{nullptr};
 
-        Scene scene;
+        Scene _scene;
+
+        Vector4 _bgColor{ 20.0f, 20.0f, 20.0f, 255.0f };
 
         unsigned long _frameStart{0};
         unsigned long _frameEnd{0};

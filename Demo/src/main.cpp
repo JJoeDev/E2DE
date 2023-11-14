@@ -1,4 +1,5 @@
-#include "../../E2DE/src/core.h"
+#include "../../E2DE/src/Engine/core.h"
+#include "../../E2DE/src/Scene/Entity.h"
 #include <iostream>
 
 int main(){
@@ -34,8 +35,6 @@ int main(){
 
     p.GetComponent<e2e::TransformComponent>().Position = e2e::Vector(20.0f, 20.0f);
     p.GetComponent<e2e::TransformComponent>().Scale = e2e::Vector(50.0f, 50.0f);
-
-    std::cout << "POS X: " << pos.x << " POS Y: " << pos.y << '\n';
 
     while(!app.Terminate()){
         if(app.GetEventInstance()->Hold("t")){

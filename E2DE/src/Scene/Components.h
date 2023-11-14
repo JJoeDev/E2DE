@@ -1,7 +1,7 @@
 #ifndef E2E_COMPONENTS_H_
 #define E2E_COMPONENTS_H_
 
-#include "../Vector.h"
+#include "../Math/Vector.h"
 #include <SDL2/SDL_render.h>
 #include <memory>
 

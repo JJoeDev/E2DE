@@ -1,6 +1,6 @@
 #include "Scene.h"
 #include "Entity.h"
-#include "../core.h"
+#include "../Engine/core.h"
 
 namespace e2e{
     Scene::Scene(){

@@ -75,6 +75,7 @@ after making the build directory you can run<br> ``cmake /SDL2 -B /build`` once 
 | - | - | - |
 | Window Creation | WORKING | main |
 | Basic inputs | BASIC SUPPORT (Keyboard only) | main |
+| ECS | WORKING | dev |
 | Rendering | W.I.P | dev |
 
 ---
@@ -83,7 +84,7 @@ after making the build directory you can run<br> ``cmake /SDL2 -B /build`` once 
 | Libraries | Branch |
 | - | - |
 | [SDL2](https://www.libsdl.org/) | main |
-| [EnTT](https://github.com/skypjack/entt) | N/A |
+| [EnTT](https://github.com/skypjack/entt) | dev |
 
 ### License
 

@@ -1,5 +1,4 @@
 #include "core.h"
-#include "Scene/Components.h"
 #include <SDL2/SDL_render.h>
 
 namespace e2e{
@@ -31,7 +30,7 @@ namespace e2e{
     void Engine::Render(){
         _Clear();
 
-        auto view = scene._registry.view<SpriteRendererComponent, TransformComponent>();
+        auto view = _scene._registry.view<SpriteRendererComponent, TransformComponent>();
         for(auto e : view){
             auto& position = view.get<TransformComponent>(e).Position;
             auto& scale = view.get<TransformComponent>(e).Scale;
@@ -45,7 +44,6 @@ namespace e2e{
             SDL_RenderDrawRect(_renderer, &r);
         }
 
-        SDL_SetRenderDrawColor(_renderer, 20, 20, 20, 255);
         _Present();
     }
 
@@ -56,6 +54,7 @@ namespace e2e{
     }
 
     void Engine::_Present(){
+        SDL_SetRenderDrawColor(_renderer, _bgColor.x, _bgColor.y, _bgColor.w, _bgColor.h);
         SDL_RenderPresent(_renderer);
     }
 }
