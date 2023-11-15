@@ -8,3 +8,9 @@
 [submodule "E2DE/Vendor/BGFX/bgfx"]
 	path = E2DE/Vendor/BGFX/bgfx
 	url = https://github.com/bkaradzic/bgfx.git
+[submodule "E2DE/Vendor/BGFX/bx"]
+	path = E2DE/Vendor/BGFX/bx
+	url = https://github.com/bkaradzic/bx.git
+[submodule "E2DE/Vendor/BGFX/bimg"]
+	path = E2DE/Vendor/BGFX/bimg
+	url = https://github.com/bkaradzic/bimg.git
