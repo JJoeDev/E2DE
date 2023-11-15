@@ -71,12 +71,13 @@ after making the build directory you can run<br> ``cmake /SDL2 -B /build`` once 
 ---
 
 ### Features
-| Features | STATUS | Branch |
-| - | - | - |
-| Window Creation | WORKING | main |
-| Basic inputs | BASIC SUPPORT (Keyboard only) | main |
-| ECS | WORKING | dev |
-| Rendering | W.I.P | dev |
+| Features | STATUS | Branch | Message |
+| - | - | - | - |
+| Window Creation | WORKING | main | Updating it to work with BGFX instead of pure SDL |
+| Basic inputs | BASIC SUPPORT (Keyboard only) | main | It works for now, but I need mouse input at some point |
+| ECS | WORKING | dev | Should be stable enough for now |
+| Scenes | W.I.P | dev | They exist, but need more work |
+| Rendering | W.I.P | dev | Just need to figure out how to render a component from the entity |
 
 ---
 
@@ -84,6 +85,7 @@ after making the build directory you can run<br> ``cmake /SDL2 -B /build`` once 
 | Libraries | Branch |
 | - | - |
 | [SDL2](https://www.libsdl.org/) | main |
+| [BGFX](https://github.com/bkaradzic/bgfx) | dev |
 | [EnTT](https://github.com/skypjack/entt) | dev |
 
 ### License
