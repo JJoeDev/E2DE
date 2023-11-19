@@ -1,14 +1,20 @@
 # E2DE (Ego 2D Engine)
 
-This is a simple 2D game engine that I am making at the moment because I have wanted to do it for quite a while
-
-The engine is not supposed to compete against other engines like Unity, Godot, or GDevelop, it is only supposed to be something I use for small 2D games, but lets see how long that stays true
+E2DE aka Ego 2D Engine is a simple 2D game engine/Framework I am developing for myself to use and challenge myself. For a more in depth indtroduction, take a read [here](#what-is-this-exactly)
 
 ---
 
 [What is E2DE](#what-is-this-exactly)
 
+[License](#license)
+
+[Development code](#latest-development-build)
+
 [How do I try it](#instalation-and-setup)
+
+- [Windows](#windows)
+
+- [Linux](#linux)
 
 [Engine Features](#features)
 
@@ -18,51 +24,69 @@ The engine is not supposed to compete against other engines like Unity, Godot, o
 
 ## What is this exactly?
 
-E2DE is a simple game engine I am writing in C++ to learn more complex C++ topics and to get a bigger project on github. But it is also because I love a challenge and for the last year i have been making small games in frameworks like SDL2 Raylib and SFML.
+E2DE is a simple 2D game engine/Framework I am developing using C++. The purpose for this project is to simple have something for myself to keep developing on, and keep me ingaged.
 
-Now they are all awesome and good frameworks, some easier than others. But I want a "higher level" framework that can do more with less code, that is why I am developing E2DE. But I do have plans on making it a full on engine in the future once I am comfortable with the featureset of the engine.
+I know this game engine is not geing to challenge the big onse like GDevelop, Godot, or Unreal Engine, but that is also not really the goal.
+
+This is again simply to keep me learning more complex C++ topics and how to structure and manage a large project. It is also just really fun to be able to tell people I made my own game engine. I do however aim to add more and more to the engine, and maybe even try to add 3D by using OpenGL with SDL2.
 
 ---
 
+## Latest development build
+
+### DISCLAIMER
+
+If you are considering on trying out the dev branch just be warned that it might not work. I try to only push code that does compile, but at times I will have to also push some code that I am activly working on. 
+
+[Here is where you can get the latest dev build](https://github.com/jJoeDev/e2de/tree/dev)
+
 ## Instalation and setup
 
-E2DE is not even close to being ready for use yet, but if you really want to try it you can always clone the repo and run it just like I do at the moment
+**E2DE is still in its early stages and is not even close to be an ideal choice for a game engine. You are welcome to give it a try, but be warned, it is missing a lot of features.**
 
 #### WINDOWS
 
-If you are on windows, then you will have to figure out how to link to SDL2 your self, as I have been working on the linux part first
+Sorry to dissapoint, but I have been prioritizing the Linux version as I myself am a linux user, I have not been taking the time to figure out how you install premake on Windows or how I am supposed to compile the engine on Windows. But in some point in the future I will be adding Windows support
 
 #### LINUX
 
-Start by installing premake, on arch based distros its as simple as ```sudo pacman -S premake```
+**REQUIREMENTS**
 
-you can check if it is installed correctly by running ```premake5 --version```
+You need to have cmake, make, and premake installed.
 
-1. git clone https://github.com/JJoeDev/E2DE.git
+Premake5 can be installed on arch based distros using ``sudo pacman -S premake`` and on fedora based distros its ``sudo dnf install premake``
 
-2. Work your way to E2DE/E2DE/Vendor/SDL2/Linux and create a directory called "build"
+You can check if premake is installed by running ``premake5 --version``
 
-3. cd into SDL2-2.28.4 and run ```cmake . -B ../build```
+---
 
-4. now you can go back to ../build and run the ```make``` command like this: make
+1. Start by cloning either master or dev version of the engine using either<br> ``git clone --recursive https://github.com/JJoeDev/E2DE.git`` and get the dev by adding ``-b dev`` to the end
 
-5. That should be everything, to check if it is running you can go back to ```../../../../../``` and run ```./testrun-d.sh``` to build the engine library
-and also build the Demo and lastly it will run the demo for you
+2. You have to build SDL2 yourself for now, so go ahead and make your way to the Vendor directory in the engine code at ``E2DE/E2DE/Vendor`` and add a build directory
+after making the build directory you can run<br> ``cmake /SDL2 -B /build`` once cmake is done you are free to run ``make -C build``
+
+3. Perfect, now SDL2 should have build correctly. You can now go back to the global E2DE directory (The first one) and run the testrun shell script to build the engine, demo, and run the demo. 
+``./testrun-d.sh``
 
 ---
 
 ### Features
-| Features | STATUS |
-| - | - |
-| Window Creation | WORKING |
-| Basic inputs | BASIC SUPPORT (Keyboard only) |
-| Rendering | W.I.P |
+| Features | STATUS | Branch | Message |
+| - | - | - | - |
+| Window Creation | WORKING | main | I wanted to use BGFX, but I could not get it to work with premake, so its pure SDL now |
+| Basic inputs | BASIC SUPPORT (Keyboard only) | main | It works for now, but I need mouse input at some point |
+| ECS | WORKING | dev | Should be stable enough for now |
+| Scenes | W.I.P | dev | They exist, but need more work |
+| Rendering | W.I.P | dev | Just need to figure out how to render a component from the entity |
 
 ---
 
 ### Libraries
-| Libraries |
-| - |
-| SDL2 (for window and input) |
+| Libraries | Branch |
+| - | - |
+| [SDL2](https://www.libsdl.org/) | main |
+| [EnTT](https://github.com/skypjack/entt) | dev |
 
+### License
 
+[This project](LICENSE) uses GPL3 (GNU GENERAL PUBLIC LICENSE Version 3) 
