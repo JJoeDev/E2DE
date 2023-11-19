@@ -3,7 +3,7 @@
 #include <iostream>
 
 int main(){
-    e2e::Engine app("Hello DEMO (with bgfx)", 500, 500, SHOWN);
+    e2e::Engine app("Hello DEMO (Without BGFX.... for now)", 500, 500, SHOWN);
 
     app.GetEventInstance()->NewMap("t");
     app.GetEventInstance()->BindKey("t", e2e::KEYS::KEY_UP, 1.0f);

@@ -4,11 +4,7 @@
 #include <iostream>
 #include <sys/types.h>
 
-#include "../../Vendor/BGFX/bgfx/include/bgfx/bgfx.h"
-#include "../../Vendor/BGFX/bgfx/include/bgfx/platform.h"
-
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_syswm.h>
 
 #include "../Events/EventManager.h"
 #include "../Scene/Scene.h"
@@ -72,9 +68,6 @@ namespace e2e{
     private:
         void _Clear();
         void _Present();
-
-        SDL_SysWMinfo _wmi;
-        bgfx::PlatformData _pd;
 
         SDL_Window* _window{ nullptr };
         SDL_Renderer* _renderer{ nullptr };
