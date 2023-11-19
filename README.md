@@ -73,7 +73,7 @@ after making the build directory you can run<br> ``cmake /SDL2 -B /build`` once 
 ### Features
 | Features | STATUS | Branch | Message |
 | - | - | - | - |
-| Window Creation | WORKING | main | Updating it to work with BGFX instead of pure SDL |
+| Window Creation | WORKING | main | I wanted to use BGFX, but I could not get it to work with premake, so its pure SDL now |
 | Basic inputs | BASIC SUPPORT (Keyboard only) | main | It works for now, but I need mouse input at some point |
 | ECS | WORKING | dev | Should be stable enough for now |
 | Scenes | W.I.P | dev | They exist, but need more work |
@@ -85,7 +85,6 @@ after making the build directory you can run<br> ``cmake /SDL2 -B /build`` once 
 | Libraries | Branch |
 | - | - |
 | [SDL2](https://www.libsdl.org/) | main |
-| [BGFX](https://github.com/bkaradzic/bgfx) | dev |
 | [EnTT](https://github.com/skypjack/entt) | dev |
 
 ### License
