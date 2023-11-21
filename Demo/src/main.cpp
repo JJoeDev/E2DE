@@ -1,5 +1,6 @@
 #include "../../E2DE/src/Engine/core.h"
 #include "../../E2DE/src/Scene/Entity.h"
+#include <filesystem>
 #include <iostream>
 
 int main(){
@@ -22,7 +23,8 @@ int main(){
     auto player = game.GetScene().CreateEntity();
     player.AddComponent<e2e::SpriteRendererComponent>(e2e::Color(100, 120, 60, 255)); // This can not render sprites yet, but can render a rectangle with a rgba value
 
-    game.LoadTexture(player.GetComponent<e2e::SpriteRendererComponent>(), "/home/jjoe/DEV/cpp/E2DE/Demo/textures/test.png");
+    // Load a texture to the texture component and use the engine path to find the correct folder
+    game.LoadTexture(player.GetComponent<e2e::SpriteRendererComponent>(), game.GetPath() + "/textures/test.png");
 
     // Gets a reference to the transform component so we don't have to use so many function calls
     auto& transform = player.GetComponent<e2e::TransformComponent>();
@@ -45,6 +47,9 @@ int main(){
 
         // This is our movement code
         transform.Position += direction * 0.5f * game.GetDeltaTime();
+        transform.Rotation += 0.1f * game.GetDeltaTime();
+
+        //std::cout << "Rot: " << transform.Rotation << '\n';
 
         // game.update() is what keeps quite a large pile of the engine running
         game.update();

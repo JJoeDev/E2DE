@@ -65,9 +65,9 @@ namespace e2e{
 
         inline void SetBgColor(const Vector4& color) { _bgColor = color; }
 
-        inline const char* GetPath() { return std::filesystem::current_path().c_str(); }
+        inline std::string GetPath() { return std::filesystem::current_path().c_str(); }
 
-        void LoadTexture(SpriteRendererComponent&, const char* path);
+        void LoadTexture(SpriteRendererComponent&, const std::string& path);
 
         void update();
         void Render();

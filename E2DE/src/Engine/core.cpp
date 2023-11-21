@@ -3,8 +3,6 @@
 #include <SDL2/SDL_render.h>
 #include <cstdint>
 
-
-
 namespace e2e{
     Engine::Engine(const char* title, int width, int height, u_int32_t flags){
         _windowSize.x = width;
@@ -26,8 +24,8 @@ namespace e2e{
         SDL_Quit();
     }
 
-    void Engine::LoadTexture(SpriteRendererComponent& SRC, const char* path){
-        SRC.texture = TextureManager::LoadTexture(_renderer, path);
+    void Engine::LoadTexture(SpriteRendererComponent& SRC, const std::string& path){
+        SRC.texture = TextureManager::LoadTexture(_renderer, path.c_str());
     }
 
     void Engine::update(){
@@ -43,20 +41,22 @@ namespace e2e{
 
         auto view = _scene._registry.view<SpriteRendererComponent, TransformComponent>();
         for(auto e : view){
-            auto& position = view.get<TransformComponent>(e).Position;
-            auto& scale = view.get<TransformComponent>(e).Scale;
+            auto& transform = view.get<TransformComponent>(e);
             auto& renderComp = view.get<SpriteRendererComponent>(e);
 
-            SDL_Rect r = {(int)position.x, (int)position.y, (int)scale.x, (int)scale.y};
+            SDL_Rect r = {(int)transform.Position.x, (int)transform.Position.y, (int)transform.Scale.x, (int)transform.Scale.y};
 
             auto& col = view.get<SpriteRendererComponent>(e).color;
 
             SDL_SetRenderDrawColor(_renderer, col.x, col.y, col.w, col.h);
             SDL_RenderDrawRect(_renderer, &r);
 
+            if(transform.Rotation >= 360.0f) transform.Rotation = 0.0f;
+            if(transform.Rotation <= -360.0f) transform.Rotation = 0.0f;
+
             if(renderComp.texture){
                 SDL_Texture* tex = renderComp.texture.get();
-                SDL_RenderCopy(_renderer, tex, nullptr, &r);
+                SDL_RenderCopyEx(_renderer, tex, nullptr, &r, transform.Rotation, nullptr, SDL_FLIP_NONE);
             }
         }
 
