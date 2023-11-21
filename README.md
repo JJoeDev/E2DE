@@ -18,6 +18,8 @@ E2DE aka Ego 2D Engine is a simple 2D game engine/Framework I am developing for 
 
 [Engine Features](#features)
 
+[My tasks](#working-on)
+
 [Libraries in use](#libraries)
 
 ---
@@ -75,9 +77,9 @@ after making the build directory you can run<br> ``cmake /SDL2 -B /build`` once 
 | - | - | - | - |
 | Window Creation | WORKING | main | I wanted to use BGFX, but I could not get it to work with premake, so its pure SDL now |
 | Basic inputs | BASIC SUPPORT (Keyboard only) | main | It works for now, but I need mouse input at some point |
-| ECS | WORKING | dev | Should be stable enough for now |
-| Scenes | W.I.P | dev | They exist, but need more work |
-| Rendering | W.I.P | dev | Just need to figure out how to render a component from the entity |
+| ECS | WORKING | main | Should be stable enough for now |
+| Scenes | W.I.P | main | They exist, but need more work |
+| Rendering | W.I.P | main | They can only render a rect with a color for now |
 
 ---
 
@@ -86,6 +88,17 @@ after making the build directory you can run<br> ``cmake /SDL2 -B /build`` once 
 | - | - |
 | [SDL2](https://www.libsdl.org/) | main |
 | [EnTT](https://github.com/skypjack/entt) | dev |
+
+
+### Working on
+| Task | Status | Branch | Message |
+| - | - | - | - |
+| Sprite loading | Working on | dev | I am working on this now so I can get it working asap |
+| Better event system | For the future | N/A | The current event system works for now |
+| Sprite layers | For the future | N/A | I will probably be working on this when sprites are working |
+| Better scene system | For the future | N/A | Sprites are sadly far too important for now |
+| Particle system | For the future | N/A | I really want to make this asap |
+| Camera system | For the future | N/A | This is not that important for me yet, but at some point I will probably make this |
 
 ### License
 
