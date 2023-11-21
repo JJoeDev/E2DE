@@ -80,6 +80,7 @@ after making the build directory you can run<br> ``cmake /SDL2 -B /build`` once 
 | ECS | WORKING | main | Should be stable enough for now |
 | Scenes | W.I.P | main | They exist, but need more work |
 | Rendering | W.I.P | main | They can only render a rect with a color for now |
+| Sprite loading and rendering | W.I.P | dev | They can be loaded and rendererd, but I am not happy with how it is as of now |
 
 ---
 

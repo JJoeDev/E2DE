@@ -9,6 +9,9 @@
 #include "../Events/EventManager.h"
 #include "../Scene/Scene.h"
 #include "../Math/Vector.h"
+#include "TextureManager.h"
+
+#include <filesystem>
 
 /*
     TODO: Rendering
@@ -61,6 +64,10 @@ namespace e2e{
         inline Scene& GetScene() { return _scene; }
 
         inline void SetBgColor(const Vector4& color) { _bgColor = color; }
+
+        inline const char* GetPath() { return std::filesystem::current_path().c_str(); }
+
+        void LoadTexture(SpriteRendererComponent&, const char* path);
 
         void update();
         void Render();

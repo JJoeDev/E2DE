@@ -1,5 +1,9 @@
 #include "core.h"
+#include "TextureManager.h"
+#include <SDL2/SDL_render.h>
 #include <cstdint>
+
+
 
 namespace e2e{
     Engine::Engine(const char* title, int width, int height, u_int32_t flags){
@@ -22,6 +26,10 @@ namespace e2e{
         SDL_Quit();
     }
 
+    void Engine::LoadTexture(SpriteRendererComponent& SRC, const char* path){
+        SRC.texture = TextureManager::LoadTexture(_renderer, path);
+    }
+
     void Engine::update(){
         _frameEnd = _frameStart;
         _frameStart = SDL_GetPerformanceCounter();
@@ -37,14 +45,19 @@ namespace e2e{
         for(auto e : view){
             auto& position = view.get<TransformComponent>(e).Position;
             auto& scale = view.get<TransformComponent>(e).Scale;
+            auto& renderComp = view.get<SpriteRendererComponent>(e);
 
             SDL_Rect r = {(int)position.x, (int)position.y, (int)scale.x, (int)scale.y};
 
             auto& col = view.get<SpriteRendererComponent>(e).color;
 
             SDL_SetRenderDrawColor(_renderer, col.x, col.y, col.w, col.h);
-
             SDL_RenderDrawRect(_renderer, &r);
+
+            if(renderComp.texture){
+                SDL_Texture* tex = renderComp.texture.get();
+                SDL_RenderCopy(_renderer, tex, nullptr, &r);
+            }
         }
 
         _Present();

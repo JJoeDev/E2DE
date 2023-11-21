@@ -19,7 +19,7 @@ namespace e2e{
     struct SpriteRendererComponent{
         SpriteRendererComponent() = default;
         SpriteRendererComponent(const SpriteRendererComponent&) = default;
-        SpriteRendererComponent(const Vector4& c) : color(c) {}
+        SpriteRendererComponent(const Color& c) : color(c) {}
 
         Vector4 color{1.0f, 1.0f, 1.0f, 1.0f};
         std::shared_ptr<SDL_Texture> texture;

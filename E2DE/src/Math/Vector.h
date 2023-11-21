@@ -56,6 +56,8 @@ namespace e2e{
         float x, y;
         float w, h;
     };
+
+    typedef Vector4 Color;
 }
 
 #endif

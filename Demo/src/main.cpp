@@ -20,7 +20,9 @@ int main(){
 
     // Create a player entity, all entities has a transform component
     auto player = game.GetScene().CreateEntity();
-    player.AddComponent<e2e::SpriteRendererComponent>(e2e::Vector4(100, 120, 60, 255)); // This can not render sprites yet, but can render a rectangle with a rgba value
+    player.AddComponent<e2e::SpriteRendererComponent>(e2e::Color(100, 120, 60, 255)); // This can not render sprites yet, but can render a rectangle with a rgba value
+
+    game.LoadTexture(player.GetComponent<e2e::SpriteRendererComponent>(), "/home/jjoe/DEV/cpp/E2DE/Demo/textures/test.png");
 
     // Gets a reference to the transform component so we don't have to use so many function calls
     auto& transform = player.GetComponent<e2e::TransformComponent>();
