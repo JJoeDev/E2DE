@@ -1,11 +1,11 @@
-#include "../../E2DE/src/Engine/core.h"
-#include "../../E2DE/src/Scene/Entity.h"
-#include <filesystem>
-#include <iostream>
+#include "../../E2DE/E2DE.h"
 
 int main(){
     // Here we are creating the engine with a title, width, height, and a window flag
     e2e::Engine game("Simple Demo Game", 800, 800, SHOWN);
+
+    // Set the path to the user assets by getting the executable path
+    game.SetAssetPath(game.GetPath().parent_path().parent_path() / "textures"); // path/to/e2deDirectory/E2DE/Demo/textures/
 
     // Get a pointer to the event instance so we don't have to call this function every time
     auto* inputHandler = game.GetEventInstance();
@@ -23,9 +23,9 @@ int main(){
     auto player = game.GetScene().CreateEntity();
     player.AddComponent<e2e::SpriteRendererComponent>(e2e::Color(100, 120, 60, 255)); // This can not render sprites yet, but can render a rectangle with a rgba value
 
-    // Load a texture to the texture component and use the engine path to find the correct folder
-    game.LoadTexture(player.GetComponent<e2e::SpriteRendererComponent>(), game.GetPath() + "/textures/test.png");
-
+    // Load a texture to the sprite renderer component by loading one from the asset path we set earlier
+    game.LoadTexture(player.GetComponent<e2e::SpriteRendererComponent>(), game.GetAssetPath() + "/test.png");
+    std::cout << "ASSET PATH TEST.PNG: " << game.GetAssetPath() + "test.png" << '\n';
     // Gets a reference to the transform component so we don't have to use so many function calls
     auto& transform = player.GetComponent<e2e::TransformComponent>();
 

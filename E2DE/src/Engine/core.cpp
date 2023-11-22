@@ -2,6 +2,9 @@
 #include "TextureManager.h"
 #include <SDL2/SDL_render.h>
 #include <cstdint>
+#include <filesystem>
+#include <stdexcept>
+#include <unistd.h>
 
 namespace e2e{
     Engine::Engine(const char* title, int width, int height, u_int32_t flags){
@@ -24,7 +27,7 @@ namespace e2e{
         SDL_Quit();
     }
 
-    void Engine::LoadTexture(SpriteRendererComponent& SRC, const std::string& path){
+    void Engine::LoadTexture(SpriteRendererComponent& SRC, const std::string& path) const {
         SRC.texture = TextureManager::LoadTexture(_renderer, path.c_str());
     }
 
@@ -61,6 +64,23 @@ namespace e2e{
         }
 
         _Present();
+    }
+
+    const std::filesystem::path Engine::GetPath() const {
+#ifdef __linux__
+        char buffer[2048];
+        ssize_t count = readlink("/proc/self/exe", buffer, sizeof(buffer) - 1);
+
+        if(count != -1){
+            buffer[count] = '\0';
+            return std::filesystem::canonical(buffer).parent_path().string();
+        }
+        else throw std::runtime_error("E2E ERROR: Unable to get path to executable!");
+#elif _WIN32
+        char buffer[2048];
+        GetModuleFileNameA(nullptr, buffer, sizeof(buffer));
+        return std::filesystem::canonical(buffer);
+#endif
     }
 
     ////// PRIVATES //////

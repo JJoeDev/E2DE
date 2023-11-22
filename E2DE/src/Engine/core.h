@@ -13,6 +13,12 @@
 
 #include <filesystem>
 
+#ifdef __linux__
+#include <unistd.h>
+#elif _WIN32
+#include <Windows.h>
+#endif
+
 /*
     TODO: Rendering
     IDEAS{
@@ -65,9 +71,11 @@ namespace e2e{
 
         inline void SetBgColor(const Vector4& color) { _bgColor = color; }
 
-        inline std::string GetPath() { return std::filesystem::current_path().c_str(); }
-
-        void LoadTexture(SpriteRendererComponent&, const std::string& path);
+        inline void SetAssetPath(const std::filesystem::path& path) { _assetPath = path; }
+        inline std::string GetAssetPath() { return _assetPath; }
+        const std::filesystem::path GetPath() const;
+        
+        void LoadTexture(SpriteRendererComponent&, const std::string& path) const;
 
         void update();
         void Render();
@@ -75,6 +83,8 @@ namespace e2e{
     private:
         void _Clear();
         void _Present();
+
+        std::filesystem::path _assetPath;
 
         SDL_Window* _window{ nullptr };
         SDL_Renderer* _renderer{ nullptr };
