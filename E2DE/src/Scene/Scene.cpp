@@ -16,4 +16,8 @@ namespace e2e{
         ent.AddComponent<TransformComponent>();
         return ent;
     }
+
+    void Scene::DestroyEntity(Entity& e){
+        _registry.destroy(e.GetEntityHandle());
+    }
 }

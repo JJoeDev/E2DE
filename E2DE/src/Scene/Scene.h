@@ -3,6 +3,7 @@
 
 #include "../../Vendor/ECS/EnTT/src/entt/entt.hpp" // We can just say #include "entt.hpp" but vscodium can't find the header so I do this for now
 #include "Components.h"
+#include <vector>
 
 namespace e2e{
     class Entity;
@@ -14,6 +15,7 @@ namespace e2e{
         ~Scene();
 
         Entity CreateEntity();
+        void DestroyEntity(Entity&);
 
     private:
         entt::registry _registry;

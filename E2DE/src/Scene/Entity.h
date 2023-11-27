@@ -40,6 +40,8 @@ namespace e2e{
             _scene->_registry.remove<T>(_entityHandle);
         }
 
+        inline entt::entity GetEntityHandle() { return _entityHandle; }
+
         operator bool() const { return _entityHandle != entt::null; }
 
     private:

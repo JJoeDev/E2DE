@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <stdexcept>
 #include <unistd.h>
+#include <vector>
 
 namespace e2e{
     Engine::Engine(const char* title, int width, int height, u_int32_t flags){
@@ -31,12 +32,37 @@ namespace e2e{
         SRC.texture = TextureManager::LoadTexture(_renderer, path.c_str());
     }
 
-    void Engine::update(){
+    bool Engine::checkCollisions(const AABBCollisionBox& col1, const TransformComponent& t1, const AABBCollisionBox& col2, const TransformComponent& t2){
+        bool colX = t1.Position.x + col1.size.x >= t2.Position.x && t2.Position.x + col2.size.x >= t1.Position.x;
+        bool colY = t1.Position.y + col1.size.y >= t2.Position.y && t2.Position.y + col2.size.y >= t1.Position.y;
+
+        return colX && colY;
+    }
+
+    void Engine::Update(){
         _frameEnd = _frameStart;
         _frameStart = SDL_GetPerformanceCounter();
         _delta = static_cast<double>((_frameStart - _frameEnd) * 1000 / static_cast<double>(SDL_GetPerformanceFrequency()));
 
         _eventManager->Update();
+
+        auto view = _scene._registry.view<TransformComponent, AABBCollisionBox>();
+        for (auto e : view) {
+            auto& transform = view.get<TransformComponent>(e);
+            auto& aabb = view.get<AABBCollisionBox>(e);
+
+            for(auto e2 : view){
+                auto& transform2 = view.get<TransformComponent>(e2);
+                auto& aabb2 = view.get<AABBCollisionBox>(e2);
+
+                if (e == e2) continue;
+                if(aabb.collisionLayer != aabb2.collisionLayer) continue;
+                if (checkCollisions(aabb, transform, aabb2, transform2)){
+                    aabb.didCollide = true;
+                    aabb2.didCollide = true;
+                }
+            }
+        }
     }
 
     void Engine::Render(){

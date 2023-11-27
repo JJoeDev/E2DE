@@ -24,6 +24,16 @@ namespace e2e{
         Vector4 color{1.0f, 1.0f, 1.0f, 1.0f};
         std::shared_ptr<SDL_Texture> texture;
     };
+
+    struct AABBCollisionBox {
+        AABBCollisionBox() = default;
+        AABBCollisionBox(const AABBCollisionBox&) = default;
+        AABBCollisionBox(const int& CollisionLayer, const Vector& Size) : collisionLayer(CollisionLayer), size(Size) {}
+
+        int collisionLayer{0};
+        bool didCollide{false};
+        Vector size{};
+    };
 }
 
 #endif

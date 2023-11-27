@@ -19,13 +19,25 @@ int main(){
     inputHandler->BindKey("Vertical", e2e::KEYS::KEY_W, -1.0f);
     inputHandler->BindKey("Vertical", e2e::KEYS::KEY_S, 1.0f);
 
+    auto enemy = game.GetScene().CreateEntity();
+    enemy.AddComponent<e2e::SpriteRendererComponent>(e2e::Color(255, 60, 20, 255));
+    enemy.AddComponent<e2e::AABBCollisionBox>(1, e2e::Vector(50, 50));
+
+    auto& enemyT = enemy.GetComponent<e2e::TransformComponent>();
+    auto& enemySprt = enemy.GetComponent<e2e::SpriteRendererComponent>();
+    auto& enemyAABB = enemy.GetComponent<e2e::AABBCollisionBox>();
+
+    enemyT.Position = e2e::Vector(225, 397);
+    enemyT.Scale = e2e::Vector(50, 50);
+    game.LoadTexture(enemySprt, game.GetAssetPath() + "/badman.png");
+
     // Create a player entity, all entities has a transform component
     auto player = game.GetScene().CreateEntity();
     player.AddComponent<e2e::SpriteRendererComponent>(e2e::Color(100, 120, 60, 255)); // This can not render sprites yet, but can render a rectangle with a rgba value
+    player.AddComponent<e2e::AABBCollisionBox>(1, e2e::Vector(50, 50)); // Axis Aligned Bounding Box collision layer + size
 
     // Load a texture to the sprite renderer component by loading one from the asset path we set earlier
     game.LoadTexture(player.GetComponent<e2e::SpriteRendererComponent>(), game.GetAssetPath() + "/test.png");
-    std::cout << "ASSET PATH TEST.PNG: " << game.GetAssetPath() + "test.png" << '\n';
     // Gets a reference to the transform component so we don't have to use so many function calls
     auto& transform = player.GetComponent<e2e::TransformComponent>();
 
@@ -49,10 +61,11 @@ int main(){
         transform.Position += direction * 0.5f * game.GetDeltaTime();
         transform.Rotation += 0.1f * game.GetDeltaTime();
 
-        //std::cout << "Rot: " << transform.Rotation << '\n';
+        if(enemy && enemyAABB.didCollide) // Crashes engine, dont do this lmao
+            game.GetScene().DestroyEntity(enemy);
 
         // game.update() is what keeps quite a large pile of the engine running
-        game.update();
+        game.Update();
         // game.Render() is here to render all SpriteRendererComponents
         game.Render();
     }

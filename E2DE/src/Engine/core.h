@@ -19,16 +19,6 @@
 #include <Windows.h>
 #endif
 
-/*
-    TODO: Rendering
-    IDEAS{
-        * Static renderer that every entity can get their hands on
-        * Inheritance for gameobjects
-        * ECS? (I am not creating my own ECS again. Use EnTT)
-        * Forward declaration
-    }
-*/
-
 enum WINDOW_FLAG{
     FULLSCREEN         = SDL_WINDOW_FULLSCREEN,
     OPENGL             = SDL_WINDOW_OPENGL,
@@ -77,7 +67,9 @@ namespace e2e{
         
         void LoadTexture(SpriteRendererComponent&, const std::string& path) const;
 
-        void update();
+        bool checkCollisions(const AABBCollisionBox&, const TransformComponent&, const AABBCollisionBox&, const TransformComponent&);
+
+        void Update();
         void Render();
 
     private:
