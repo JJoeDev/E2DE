@@ -2,6 +2,11 @@
 
 E2DE aka Ego 2D Engine is a simple 2D game engine/Framework I am developing for myself to use and challenge myself. For a more in depth indtroduction, take a read [here](#what-is-this-exactly)
 
+
+## Notice
+
+**I made some dumb decitions when making this project and I am too lazy to figure out what needs to be done to fix the current state of E2DE. I have learned a lot and I will be making a new and hopefully better version**
+
 ---
 
 [What is E2DE](#what-is-this-exactly)
